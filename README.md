@@ -15,7 +15,7 @@ Deployed URL: https://ahgeak.github.io/daily_planner_workday_scheduler/
 GitHub Repository URL: https://github.com/ahgeak/daily_planner_workday_scheduler
 
 
-    ![screenshot of application](./Assets/Images/Work_Day_Scheduler_Screenshot.png)
+    ![screenshot](./Assets/Images/Work_Day_Scheduler_Screenshot.png)
 
 ## Credits
 I used documentation from the mdn website at: https://developer.mozilla.org/en-US/
