@@ -5,42 +5,8 @@ var pmHoursInWorkDay = 6; // 1 plus 5 because the afternoon starts at 1pm
 
 var containerFuild = document.getElementsByClassName("container-fluid");
 var hourContainer = document.getElementById("hour-container");
-console.log("This is the hourContainer" + hourContainer);
-
-// If this works, I need to add elements for all textArea and all saveButton elements
-var textArea9 = document.getElementById("textArea9");
-var saveButton9 = document.getElementById("saveButton9");
 
 
-// var body = document.body;
-// var divParentElement = document.createElement("div");
-// var divChildElement = document.createElement("div");
-// var textAreaElement = document.createElement("textarea");
-// var buttonElement = document.createElement("button");
-// var iElement = document.createElement("i");
-
-// // divParentElement.textContent = "Testing Div Parent";
-// divChildElement.textContent = "This is the child element";
-// // textAreaElement.textContent = "This is the text area";
-
-// hourContainer.appendChild(divParentElement);
-// divParentElement.appendChild(divChildElement);
-// divParentElement.appendChild(textAreaElement);
-// divParentElement.appendChild(buttonElement);
-// buttonElement.appendChild(iElement);
-
-// divParentElement.setAttribute("id", "hour-"+"i");
-// divParentElement.setAttribute("class", "row time-block");
-// divChildElement.setAttribute("class", "col-2 col-md-1 hour text-center py-3");
-// textAreaElement.setAttribute("class", "col-8 col-md-10 description");
-// textAreaElement.setAttribute("rows", "3");
-// buttonElement.setAttribute("class", "btn saveBtn col-2 col-md-1");
-// buttonElement.setAttribute("aria-label", "save");
-// iElement.setAttribute("class", "fas fa-save");
-// iElement.setAttribute("aria-hidden", "true");
-
-
-// I NEED TO CREATE: past, present, and future class tags for the divParentElements.
 
 // This fuction creates all of the working hours for the planner
 function createNewHour () {
@@ -63,6 +29,8 @@ function createNewHour () {
       buttonElement.appendChild(iElement);
 
       // change id to include current iteration number (i)
+      divParentElement.setAttribute("id", i);
+
       divParentElement.setAttribute("id", "hour-"+i);
 
       // attempted this with another way to set the ID:
@@ -141,7 +109,7 @@ function createNewHour () {
 // var hour9 = document.getElementById("hour-9");
 var hour9 = document.getElementById("hour-9");
 
-console.log(typeof hour9 + "This is hour9" + hour9);
+// console.log(typeof hour9 + "This is hour9" + hour9);
 var hour10 = document.getElementById("hour-10");
 var hour11 = document.getElementById("hour-11");
 var hour12 = document.getElementById("hour-12");
@@ -167,11 +135,7 @@ createNewHour();
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
 
-// $(function () {
 
-  // var currentHour = dayjs().format("H");
-  // console.log(currentHour + "PENGUIN");
-  // $("#currentHour").text("The current hour is " + currentHour); //erase this later
 
 
   // TODO: Add a listener for click events on the save button. This code should
@@ -180,12 +144,9 @@ createNewHour();
   // function? How can DOM traversal be used to get the "hour-x" id of the
   // time-block containing the button that was clicked? How might the id be
   // useful when saving the description in local storage?
-
-  // hour9.children.addEventListener("click", saveTaskItem());
   
-  // saveButton9.addEventListener("click", function(){
-  //   console.log("test");
-  // }) 
+  // event listener for the save button
+
 
 
   // TODO: Add code to apply the past, present, or future class to each time
@@ -193,47 +154,7 @@ createNewHour();
   // attribute of each time-block be used to conditionally add or remove the
   // past, present, and future classes? How can Day.js be used to get the
   // current hour in 24-hour time?
-
-
-  // function applyColorToRows() {
-  //   if (currentHour === 13){
-  //     hour9.setAttribute("class", "present");
-  //   } else if (currentHour < 13){
-  //     hour9.setAttribute("class", "past");
-  //   } else {
-  //     hour9.setAttribute("class", "future");
-  //   }
-  // };
-
-  // $(window).load(applyColorToRows());
-
   
-  // if (document.readyState === "loading") {
-  //   // Loading hasn't finished yet
-  //   document.addEventListener("DOMContentLoaded", applyColorToRows);
-  //   console.log("interactive");
-  // } else {
-  //   // `DOMContentLoaded` has already fired
-  //   applyColorToRows();
-  //   console.log("other");
-  // }
-
-  // document.addEventListener("DOMContentLoaded", (event) => {
-  //   console.log("DOM fully loaded and parsed");
-  //   applyColorToRows();
-  // });
-
-  // function applyColorToRows (){
-  //   if (currentHour === 13){
-  //     hour9.setAttribute("class", "present");
-  //   } else if (currentHour < 13){
-  //     hour9.setAttribute("class", "past");
-  //   } else {
-  //     hour9.setAttribute("class", "future");
-  //   }
-  // }
-
-  // applyColorToRows();
 
   // TODO: Add code to get any user input that was saved in localStorage and set
   // the values of the corresponding textarea elements. HINT: How can the id
@@ -243,50 +164,112 @@ createNewHour();
   var currentDay = dayjs().format("dddd, MMMM D");
   $("#currentDay").text(currentDay);
 
-var currentHour = dayjs().format("H");
+
+ var currentHour = dayjs().format("H");
+$("#currentHour").text("The current hour is " + currentHour); //erase this later
+
 // console.log(parseInt(currentHour));
 // currentHour = parseInt(currentHour);
 // $("#currentHour").text("The current hour is " + currentHour); //erase this later
 
-function applyColorToRows() {
-  console.log("THIS IS THE " + parseInt(currentHour));
-    if (parseInt(currentHour) === 19){
-      console.log("1");
-      hour9.setAttribute("class", "present");
-    } else if (parseInt(currentHour) < 19){
-      hour9.setAttribute("class", "past");
-      console.log("2");
-    } else if (parseInt(currentHour) > 19){
-      hour9.setAttribute("class", "future");
-      console.log("3");
-    } else {
-      console.log("failed");
-    }
-  };
+// I NEED TO CREATE: past, present, and future class tags for the divParentElements.\
 
-  applyColorToRows();
+
+// function applyColorToRows() {
+//   console.log("THIS IS THE " + parseInt(currentHour));
+//     if (parseInt(currentHour) === 19){
+//       console.log("1");
+//       hour9.setAttribute("class", "present");
+//     } else if (parseInt(currentHour) < 19){
+//       hour9.setAttribute("class", "past");
+//       console.log("2");
+//     } else if (parseInt(currentHour) > 19){
+//       hour9.setAttribute("class", "future");
+//       console.log("3");
+//     } else {
+//       console.log("failed");
+//     }
+//   };
+
+//   applyColorToRows();
 
 
 });
 
-// var currentHour = dayjs().format("H");
-// $("#currentHour").text("The current hour is " + currentHour); //erase this later
 
-// function applyColorToRows() {
-//   console.log("THIS IS THE " + currentHour);
-//     if (currentHour === 15){
-//       hour9.setAttribute("class", "present");
-//       console.log("1");
-//     } else if (currentHour < 15){
-//       hour9.setAttribute("class", "past");
-//       console.log("2");
-//     } else if (currentHour > 15){
-//       hour9.setAttribute("class", "future");
-//       console.log("3");
-//     }
-//   };
+// getElementById for the text areas for each textArea input
+var textArea9 = document.getElementById("textArea9");
+var textArea10 = document.getElementById("textArea10");
+var textArea11 = document.getElementById("textArea11");
+var textArea12 = document.getElementById("textArea12");
+var textArea1 = document.getElementById("textArea1");
+var textArea2 = document.getElementById("textArea2");
+var textArea3 = document.getElementById("textArea3");
+var textArea4 = document.getElementById("textArea4");
+var textArea5 = document.getElementById("textArea5");
 
-//   document.addEventListener("DOMContentLoaded", (event) => {
-//     console.log("DOM fully loaded and parsed");
-//     applyColorToRows();
-//   });
+// getElementById for the save buttons
+var saveButton9 = document.getElementById("saveButton9");
+var saveButton10 = document.getElementById("saveButton10");
+var saveButton11 = document.getElementById("saveButton11");
+var saveButton12 = document.getElementById("saveButton12");
+var saveButton1 = document.getElementById("saveButton1");
+var saveButton2 = document.getElementById("saveButton2");
+var saveButton3 = document.getElementById("saveButton3");
+var saveButton4 = document.getElementById("saveButton4");
+var saveButton5 = document.getElementById("saveButton5");
+
+// Click eventListeners for each of the buttons that will save the text input to local sotrage and then set the text onto the textArea
+saveButton9.addEventListener("click", function(){
+  var textArea9Input = textArea9;
+  localStorage.setItem("textArea9", JSON.stringify(textArea9Input));
+  textArea9.textContent = textArea9Input
+}) 
+
+saveButton10.addEventListener("click", function(){
+  var textArea10Input = textArea10;
+  localStorage.setItem("textArea10", JSON.stringify(textArea10Input));
+  textArea10.textContent = textArea10Input
+}) 
+
+saveButton11.addEventListener("click", function(){
+  var textArea11Input = textArea11;
+  localStorage.setItem("textArea11", JSON.stringify(textArea11Input));
+  textArea11.textContent = textArea11Input
+}) 
+
+saveButton12.addEventListener("click", function(){
+  var textArea12Input = textArea12;
+  localStorage.setItem("textArea12", JSON.stringify(textArea12Input));
+  textArea12.textContent = textArea12Input
+}) 
+
+saveButton1.addEventListener("click", function(){
+  var textArea1Input = textArea1;
+  localStorage.setItem("textArea1", JSON.stringify(textArea1Input));
+  textArea1.textContent = textArea1Input
+}) 
+
+saveButton2.addEventListener("click", function(){
+  var textArea2Input = textArea2;
+  localStorage.setItem("textArea2", JSON.stringify(textArea2Input));
+  textArea2.textContent = textArea2Input
+}) 
+
+saveButton3.addEventListener("click", function(){
+  var textArea3Input = textArea3;
+  localStorage.setItem("textArea3", JSON.stringify(textArea3Input));
+  textArea3.textContent = textArea3Input
+}) 
+
+saveButton4.addEventListener("click", function(){
+  var textArea4Input = textArea4;
+  localStorage.setItem("textArea4", JSON.stringify(textArea4Input));
+  textArea4.textContent = textArea4Input
+}) 
+
+saveButton5.addEventListener("click", function(){
+  var textArea5Input = textArea5;
+  localStorage.setItem("textArea5", JSON.stringify(textArea5Input));
+  textArea5.textContent = textArea5Input
+}) 
